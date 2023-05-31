@@ -8,14 +8,6 @@
 
 <br>
 
-<p align="center">
-  <img alt="Avançando no JavaScript" src="./public/images/readme/1.jpg" width="75%">
-</p>
-<p align="center">
-  <img alt="Avançando no JavaScript" src="./public/images/readme/3.jpg" width="75%">
-</p>  
-
-
 ## 👨‍💻 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -35,16 +27,17 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 📄 Projeto
 
-<p align="start"> 
-  Criar uma aplicação em Node.js onde o usuário cadastra um filme, preenche com algumas informações (nome, descrição, nota) e cria tags relacionadas a ele.
-  Abaixo, temos um diagrama:
+<p align="start">
+<p>Criar uma aplicação em Node.js onde o usuário cadastra um filme, preenche com algumas informações (nome, descrição, nota) e cria tags relacionadas a ele.</p>
+
+Abaixo, temos um diagrama:
 <p align="center">
-  <img alt="Avançando no JavaScript" src="./src/images/1.jpg" width="75%">
+  <img alt="data base" src="./src/images/1.png" width="75%">
 </p>
 
 Explicando cada tabela e seus campos:
 <p align="center">
-  <img alt="Avançando no JavaScript" src="./src/images/2.png" width="75%">
+  <img alt="tabela explicativa" src="./src/images/2.png" width="75%">
 </p>
 *Valores inteiros que podem variar de 1 até o 5.
 **Exemplos: ação, comedia, terror, medo...etc.
