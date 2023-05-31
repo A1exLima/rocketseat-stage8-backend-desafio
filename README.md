@@ -22,6 +22,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Date fns
 - Bcrypt
 - Git e Github
+- Insomnia (testes de rotas)
+- Beekeeper (Visualização Banco de Dados)
 
 <br>
 
