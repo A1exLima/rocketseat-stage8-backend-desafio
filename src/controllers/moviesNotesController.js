@@ -75,44 +75,50 @@ class UsersController {
 
     async indexMoviesNotes(request, response){
         const {user_id, title, movieTags} = request.query
-        let movieNotes
+        let movieNote
 
         if(movieTags){
-            const filterMovieTags = movieTags.split(",").map(tag => tag.trim())
-
-            movieNotes = await knex("movie_tags")
-            .select(
+            const filterMoviesTags = movieTags.split(",").map(movieTag => movieTag.trim())
+            movieNote = await knex("movie_tags")
+            .select([
                 "movie_notes.id",
                 "movie_notes.user_id",
-                "movie_notes.rating",
                 "movie_notes.title",
-                "movie_notes.description"
-            )
+                "movie_notes.description",
+                "movie_notes.rating",
+            ])
             .where("movie_notes.user_id", user_id)
             .whereLike("movie_notes.title", `%${title}%`)
-            .whereIn("name", filterMovieTags)
-            .innerJoin("movie_notes", "movie_notes.id", "movie_tags.movie_notes_id")
+            .whereIn("name", filterMoviesTags)
+            .innerJoin("movie_notes", "movie_notes.user_id","movie_tags.user_id")
             .orderBy("movie_notes.title")
 
         }else{
-            movieNotes = await knex("movie_notes")
+            movieNote = await knex.select(
+                "id",
+                "user_id",
+                "title",
+                "description",
+                "rating",
+            ).from("movie_notes")
             .where({user_id})
-            .whereLike("title", `%${title}%`)
+            .whereLike("title",`%${title}%`)
             .orderBy("title")
         }
 
-        const userMovieTags = await knex("movie_tags").where({user_id})
-        const movieNotesWithMovieTags = movieNotes.map( movieNote =>{
-
-            const movieTags = userMovieTags.filter(tag => tag.movie_notes_id === movieNote.id)
-
-            return {
-                ...movieNote,
-                tags: movieTags
+        const movieTagsByUserId = await knex("movie_tags").where("user_id", user_id)
+        
+        const movieNotesWithMovieTags = movieNote.map(notesMovie => {
+            const movieNoteTags = movieTagsByUserId.filter(tag => tag.user_id === notesMovie.user_id)
+            
+            return{
+                ...notesMovie,
+                movieNoteTags
             }
         })
 
         response.json(movieNotesWithMovieTags)
+
     }
 }
 
