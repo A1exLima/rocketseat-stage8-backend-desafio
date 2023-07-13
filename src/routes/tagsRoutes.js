@@ -2,7 +2,8 @@ const express = require("express")
 const moviesTagsRoutes = express()
 
 const moviesTagsController = require("../controllers/moviesTagsController.js")
+const ensureAuthenticated = require("../middlewares/ensureAuthenticated.js")
 
-moviesTagsRoutes.get("/:user_id", moviesTagsController.indexMoviesTags)
+moviesTagsRoutes.get("/", ensureAuthenticated, moviesTagsController.indexMoviesTags)
 
 module.exports = moviesTagsRoutes
