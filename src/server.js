@@ -6,6 +6,9 @@ const app = express()
 
 app.use(express.json())
 
+const uploadConfig = require("./config/upload.js")
+app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
+
 const routes = require("../src/routes/index.js")
 app.use(routes)
 
