@@ -31,6 +31,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Git e Github
 - Insomnia (testes de rotas)
 - Beekeeper (Visualização Banco de Dados)
+- Dotenv
+- PM2
 
 <br>
 
