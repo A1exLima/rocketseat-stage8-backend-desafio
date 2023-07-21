@@ -1,5 +1,6 @@
 const AppError = require("../utils/appError")
 const knex = require("../dataBase/knex/index.js")
+const dateAndTimeFormatted = require("../utils/dateAndTimeFormatted.js")
 
 class UsersController {
 
@@ -16,14 +17,16 @@ class UsersController {
         const ratingRange = rating >= 1 && rating <=5
 
         if(!ratingRange){
-            throw new AppError("Informe o valor de Rating entre 1 e 5")
+            throw new AppError("Informe uma nota entre 1 e 5!")
         }
 
         const [movie_notes_id] = await knex("movie_notes").insert({
             title,
             description,
             rating,
-            user_id
+            user_id,
+            created_at: dateAndTimeFormatted(),
+            updated_at: dateAndTimeFormatted()
         })
         
         const tagsInsert = tags.map(tag => {
@@ -61,11 +64,14 @@ class UsersController {
             "user_id",
             "rating",
             "title",
-            "description"
+            "description",
+            "created_at"
         )
         .from('movie_notes').where('id', movie_note_id).first()
         
-        const movieTags = await knex("movie_tags").where("movie_notes_id", movie_note_id).orderBy("id")
+        const movieTags = await knex("movie_tags")
+            .where("movie_notes_id", movie_note_id)
+            .orderBy("id")
 
         return response.json({
             ...movieNote,
@@ -111,7 +117,7 @@ class UsersController {
         const movieTagsByUserId = await knex("movie_tags").where("user_id", user_id)
         
         const movieNotesWithMovieTags = movieNote.map(notesMovie => {
-            const movieNoteTags = movieTagsByUserId.filter(tag => tag.user_id === notesMovie.user_id)
+            const movieNoteTags = movieTagsByUserId.filter(tags => tags.movie_notes_id === notesMovie.id)
             
             return{
                 ...notesMovie,

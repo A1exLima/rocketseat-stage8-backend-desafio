@@ -3,7 +3,7 @@ const { format } = require("date-fns")
 const dateAndTimeFormatted = () => {
 
     const currentDate = new Date()
-    const formattedDateTime = format(currentDate, "yyyy-MM-dd HH:mm:ss")
+    const formattedDateTime = format(currentDate, "dd/MM/yyyy HH:mm:ss") 
 
     return formattedDateTime
 }

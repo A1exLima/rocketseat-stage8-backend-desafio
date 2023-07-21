@@ -1,4 +1,8 @@
-<h1 align="center"> Stage 08 - Desenvolvimento Backend para Lista de Filmes</h1>
+<h1 align="center"> Stage 08 - Desenvolvimento Back-End Aplicação Lista de Filmes</h1>
+
+<p>Você pode acessar o projeto Front-End através do link: 
+  <a href= "https://github.com/A1exLima/rocketseat-stage9-frontEnd-React-RocketMovies-desafio" target="_blank"> Clique aqui ⏯ </a>
+</p>
 
 <p align="center">
   <a href="#-tecnologias">👨‍💻 Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -30,7 +34,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 📄 Projeto
 
 <p align="start">
-<p>Criar uma aplicação em Node.js onde o usuário cadastra um filme, preenche com algumas informações (nome, descrição, nota) e cria tags relacionadas a ele.</p>
+<p>Aplicação Back-end API RestFul onde o usuário cadastra nota de filmes, preenche com algumas informações (nome, descrição, nota) e cria tags relacionadas a ele.</p>
 
 Abaixo, temos um diagrama:
 <p align="center">

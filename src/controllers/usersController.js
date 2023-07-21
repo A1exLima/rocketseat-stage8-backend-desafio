@@ -50,10 +50,30 @@ class UsersController {
             throw new AppError("E-mail encontra-se em uso")
         }
 
+        if(!oldPassword && !password){
+            user.name = name ?? user.name
+            user.email = email ?? user.email
+            user.updated_at = dateAndTimeFormatted()
+
+            await knex.update({
+                name: user.name,
+                email: user.email,
+            }).table("users").where("id", id)
+
+            return response.json({
+                statusCode: 200,
+                message: "Usuário atualizado com sucesso"
+            })
+        }
+
         const checkOldPassword = await compare(oldPassword, user.password)
 
         if(!checkOldPassword){
             throw new AppError("Senha antiga não confere")
+        }
+
+        if(!password){
+            throw new AppError("Necessário informar a nova senha")
         }
 
         const newHashPassword = await hash(password, 8)
@@ -70,7 +90,7 @@ class UsersController {
             updated_at: user.updated_at
         }).table("users").where("id", id)
 
-        response.json({
+        return response.json({
             statusCode: 200,
             message: "Usuário atualizado com sucesso"
         })
