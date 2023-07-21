@@ -1,9 +1,9 @@
 <h1 align="center"> Stage 08 - Desenvolvimento Back-End Aplicação Lista de Filmes</h1>
-
-<p>Você pode acessar o projeto Front-End através do link: 
+<br>
+<p align="center">Você pode acessar o projeto Front-End através do link: 
   <a href= "https://github.com/A1exLima/rocketseat-stage9-frontEnd-React-RocketMovies-desafio" target="_blank"> Clique aqui ⏯ </a>
 </p>
-
+<br>
 <p align="center">
   <a href="#-tecnologias">👨‍💻 Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">📄 Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
