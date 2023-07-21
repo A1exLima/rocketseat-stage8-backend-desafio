@@ -24,6 +24,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Express
 - Express async errors
 - Date fns
+- Cors
+- JWT (jsonwebtoken)
+- Multer
 - Bcrypt
 - Git e Github
 - Insomnia (testes de rotas)
@@ -34,7 +37,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 📄 Projeto
 
 <p align="start">
-<p>Aplicação Back-end API RestFul onde o usuário cadastra nota de filmes, preenche com algumas informações (nome, descrição, nota) e cria tags relacionadas a ele.</p>
+<p>Aplicação Back-end API RestFul, onde o usuário cadastra nota de filmes, preenche com algumas informações (nome, descrição, nota) e cria tags relacionadas a ele.</p>
 
 Abaixo, temos um diagrama:
 <p align="center">
