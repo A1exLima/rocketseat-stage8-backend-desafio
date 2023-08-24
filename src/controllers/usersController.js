@@ -3,34 +3,22 @@ const knex = require("../dataBase/knex/index.js")
 const {hash, compare} = require("bcrypt")
 const dateAndTimeFormatted = require("../utils/dateAndTimeFormatted.js")
 
+const UserRepository = require("../repositories/UserRepository")
+const UserCreationService = require("../services/userCreationService")
+
 class UsersController {
 
     async createUser(request, response){
         const {name, email, password, confirmPassword} = request.body
-        
-        const [checkUserExists] = await knex.select("*").from("users").where("email", email)
-        
-        if(checkUserExists){
-            throw new AppError("Usuário já cadastrado no sistema",401)
-        }
 
-        if(password != confirmPassword){
-            throw new AppError("Confirmação de senha invalida", 401)
-        }
+        const userRepository = new UserRepository
+        const userCreationService = new UserCreationService(userRepository)
 
-        const hashedPassword = await hash(password,8)
-
-        await knex("users").insert({
-            name,
-            email,
-            password: hashedPassword,
-            created_at: dateAndTimeFormatted(),
-            updated_at: dateAndTimeFormatted()
-        })
+        await userCreationService.execute({name, email, password, confirmPassword})
 
         response.json({
             statusCode: 200,
-            message: "Usuário Cadastrado com sucesso"
+            message: "Usuário cadastrado com sucesso"
         })
     }
 
